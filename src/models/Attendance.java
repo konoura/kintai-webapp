@@ -36,15 +36,24 @@ public class Attendance {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "attend_date", length = 255, nullable = false)
-    private String attend_date;
+    @Column(name = "attend_month", length = 2)
+    private String attend_month;
 
-    @Column(name = "attend_begin", length = 255, nullable = false)
+    @Column(name = "attend_day", length = 2)
+    private String attend_day;
+
+    @Column(name = "attend_week", length = 2)
+    private String attend_week;
+
+    @Column(name = "attend_begin", length = 4)
     private String attend_begin;
 
-    @Column(name = "attend_finish", length = 255, nullable = false)
+    @Column(name = "attend_finish", length = 4)
     private String attend_finish;
 
-    @Column(name = "attend_break", length = 255, nullable = false)
+    @Column(name = "attend_break", length = 4)
     private String attend_break;
+
+    @Column(name = "attend_work", length = 4)
+    private String attend_work;
 }
