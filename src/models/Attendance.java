@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -21,6 +23,12 @@ import lombok.Setter;
 @NoArgsConstructor //引数なしコンストラクタを自動生成する(Lombok)
 @AllArgsConstructor //全てのクラスフィールドを引数にもつ引数ありコンストラクタを自動生成する(Lombok)
 @Entity
+@NamedQueries({
+    @NamedQuery(
+        name = "getAllAttend",
+        query = "SELECT a FROM Attendance AS a ORDER BY a.id DESC"
+    )
+})
 @Table(name="attend")
 public class Attendance {
     @Id
