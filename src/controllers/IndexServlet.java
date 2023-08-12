@@ -26,10 +26,11 @@ public class IndexServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("_token", request.getSession().getId());
+
         EntityManager em = DBUtil.createEntityManager();
 
         List<Attendance> attend = em.createNamedQuery("getAllAttend", Attendance.class).getResultList();
-        response.getWriter().append(Integer.valueOf(attend.size()).toString());
 
         em.close();
 
