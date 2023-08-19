@@ -12,12 +12,12 @@ import models.Attendance;
 import utils.DBUtil;
 
 /**
- * Servlet implementation class NewServlet
+ * Servlet implementation class CreateServlet
  */
-public class NewServlet extends HttpServlet {
+public class CreateServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    public NewServlet() {
+    public CreateServlet() {
         super();
     }
 
@@ -39,6 +39,8 @@ public class NewServlet extends HttpServlet {
         em.persist(att);
         em.getTransaction().commit();
         em.close();
+
+        response.sendRedirect(request.getContextPath() + "/index");
     }
 
 }
