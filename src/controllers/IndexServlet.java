@@ -26,8 +26,6 @@ public class IndexServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("_token", request.getSession().getId());
-
         EntityManager em = DBUtil.createEntityManager();
 
         List<Attendance> attend = em.createNamedQuery("getAllAttend", Attendance.class).getResultList();
@@ -35,9 +33,31 @@ public class IndexServlet extends HttpServlet {
         em.close();
 
         request.setAttribute("attend", attend);
+        request.setAttribute("at", new Attendance());
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/attend/index.jsp");
         rd.forward(request, response);
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            EntityManager em = DBUtil.createEntityManager();
+            em.getTransaction().begin();
+
+            Attendance att = new Attendance();
+
+            String attend_begin = request.getParameter("attend_begin");
+            att.setAttend_begin(attend_begin);
+
+            String attend_finish = request.getParameter("attend_finish");
+            att.setAttend_finish(attend_finish);
+
+            String attend_break = request.getParameter("attend_break");
+            att.setAttend_begin(attend_break);
+
+            em.persist(att);
+            em.getTransaction().commit();
+            em.close();
+
     }
 
 }

@@ -26,7 +26,7 @@ import lombok.Setter;
 @NamedQueries({
     @NamedQuery(
         name = "getAllAttend",
-        query = "SELECT a FROM Attendance AS a ORDER BY a.id DESC"
+        query = "SELECT a FROM Attendance AS a ORDER BY a.day ASC"
     )
 })
 @Table(name="attend")
