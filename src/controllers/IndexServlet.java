@@ -39,25 +39,4 @@ public class IndexServlet extends HttpServlet {
         rd.forward(request, response);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            EntityManager em = DBUtil.createEntityManager();
-            em.getTransaction().begin();
-
-            Attendance att = new Attendance();
-
-            String attend_begin = request.getParameter("attend_begin");
-            att.setAttend_begin(attend_begin);
-
-            String attend_finish = request.getParameter("attend_finish");
-            att.setAttend_finish(attend_finish);
-
-            String attend_break = request.getParameter("attend_break");
-            att.setAttend_begin(attend_break);
-
-            em.persist(att);
-            em.getTransaction().commit();
-            em.close();
-
-    }
-
 }
