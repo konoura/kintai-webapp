@@ -27,7 +27,11 @@ import lombok.Setter;
     @NamedQuery(
         name = "getAllAttend",
         query = "SELECT a FROM Attendance AS a ORDER BY a.day ASC"
-    )
+        ),
+    @NamedQuery(
+        name = "getAttendCount",
+        query = "SELECT COUNT(a) FROM Attendance AS a"
+        )
 })
 @Table(name="attend")
 public class Attendance {
@@ -45,15 +49,15 @@ public class Attendance {
     @Column(name = "week", length = 2)
     private String week;
 
-    @Column(name = "attend_begin", length = 4)
+    @Column(name = "attend_begin", length = 5)
     private String attend_begin;
 
-    @Column(name = "attend_finish", length = 4)
+    @Column(name = "attend_finish", length = 5)
     private String attend_finish;
 
-    @Column(name = "attend_break", length = 4)
+    @Column(name = "attend_break", length = 5)
     private String attend_break;
 
-    @Column(name = "attend_work", length = 4)
+    @Column(name = "attend_work", length = 5)
     private String attend_work;
 }

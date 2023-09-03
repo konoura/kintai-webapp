@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:import url="../layout/app.jsp">
     <c:param name="content">
-        <form>
+        <form method="post" action="${pageContext.request.contextPath}/create">
         <h2>勤務一覧表</h2>
         <h3>8月</h3>
         <input type="submit" value="保存">
@@ -28,13 +28,13 @@
                             <input type="text" name="attend_begin${status.index}" value="${attend.attend_begin}">
                         </td>
                         <td>
-                            <input type="text" value="${attend.attend_finish}">
+                            <input type="text" name="attend_finish${status.index}" value="${attend.attend_finish}">
                         </td>
                         <td>
-                            <input type="text" value="${attend.attend_break}">
+                            <input type="text" name="attend_break${status.index}" value="${attend.attend_break}">
                         </td>
                         <td>
-                            <input type="text" value="${attend.attend_work}">
+                            <input type="text" name="attend_work${status.index}" value="${attend.attend_work}">
                         </td>
                     </tr>
                     </c:forEach>

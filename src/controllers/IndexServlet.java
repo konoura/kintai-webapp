@@ -33,7 +33,6 @@ public class IndexServlet extends HttpServlet {
         em.close();
 
         request.setAttribute("attend", attend);
-        request.setAttribute("at", new Attendance());
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/attend/index.jsp");
         rd.forward(request, response);
